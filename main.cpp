@@ -27,19 +27,26 @@ int main()
     const double RATE10 = 3.70;
     const double RATE20 = 4.80;
     double weight, distance, dRate, price;
-
-    cout << "Enter the package weight and distance\n";
+    
     cin >> weight >> distance;
 
-    // TODO: validate input - weight must be > 0 and <= 20
+    if (weight <= 0 || weight > 20)
+        return 0;
 
-    // TODO: validate input - distance must be >= 10 and <= 3000
+    if (distance < 10 || distance > 3000)
+        return 0;
 
-    // TODO: determine rate based on weight
+    if (weight <= 2)
+        dRate = RATE2;
+    else if (weight <= 6)
+        dRate = RATE6;
+    else if (weight <= 10)
+        dRate = RATE10;
+    else
+        dRate = RATE20;
 
-    // TODO: calculate price based on distance
-
-    // Use the following statements to print output
+    int segments = (distance + 499) / 500;
+    price = segments * dRate;
     cout << setprecision(2) << fixed;
     cout << "The shipping price for package is " << price << endl;
 
